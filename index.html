@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing Prompt Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #prompt {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Writing Prompt Generator</h1>
+    <p>Select a category:</p>
+    <select id="category">
+        <option value="single_word">Single Word</option>
+        <option value="dear_abby">Dear Abby</option>
+        <option value="first_line">First Line</option>
+        <option value="memoir">Memoir</option>
+        <option value="genre">Genre</option>
+        <option value="mixed">Mixed Mode</option>
+    </select>
+    <button onclick="generatePrompt()">Generate Prompt</button>
+    <p id="prompt"></p>
+
+    <script>
+        const prompts = {
+            single_word: ["Hope", "Journey", "Shadow", "Echo", "Whisper", "Storm"],
+            dear_abby: [
+                "Dear Abby, my neighbor keeps borrowing my lawnmower and never returns it. What should I do?",
+                "Dear Abby, I found a mysterious note in an old book. Should I track down its author?",
+                "Dear Abby, my dog barks at ghosts. Should I be concerned?"
+            ],
+            first_line: [
+                "The storm rolled in just as she opened the letter.",
+                "I never meant to become a time traveler, but here we are.",
+                "'You have to see this,' he whispered, pointing at the sky."
+            ],
+            memoir: [
+                "Write about the first time you felt truly independent.",
+                "Describe a moment when you made an important decision that changed your life.",
+                "Recall a childhood memory that still makes you smile."
+            ],
+            genre: [
+                "Mystery: A detective receives a clue that leads to an unexpected suspect.",
+                "Sci-Fi: Humanity's first contact with aliens doesn't go as planned.",
+                "Fantasy: A hidden door in the library leads to another realm.",
+                "Horror: A child starts speaking a language they were never taught."
+            ]
+        };
+        
+        function generatePrompt() {
+            const category = document.getElementById("category").value;
+            let selectedPrompts = prompts[category] || 
+                [].concat(...Object.values(prompts)); // Mixed mode picks from all categories
+            
+            const prompt = selectedPrompts[Math.floor(Math.random() * selectedPrompts.length)];
+            document.getElementById("prompt").innerText = prompt;
+        }
+    </script>
+</body>
+</html>
