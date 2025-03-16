@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Write Pick - Random Prompt Generator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&display=swap');
+        body {
+            font-family: 'Raleway', sans-serif;
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(to right, #f8c291, #e55039); /* Fallback Gradient */
+            background-image: url('https://source.unsplash.com/1600x900/?writing,notebook');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        button {
+            background-color: #ff9800;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: 0.3s ease-in-out;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        button:hover {
+            background-color: #e68900;
+            transform: scale(1.05);
+        }
+        #prompt {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Write Pick</h1>
+        <p>Click the button to get a random writing prompt!</p>
+        <button onclick="generatePrompt()">Get Prompt</button>
+        <p id="prompt"></p>
+    </div>
+
+    <script>
+        const prompts = [
+    "Hope",
+    "Journey",
+    "Silence",
+    "Whisper",
+    "Reflection",
+    "Dream",
+    "Solitude",
+    "Shadow",
+    "Laughter",
+    "Rain",
+    "Ocean",
+    "Fire",
+    "Breeze",
+    "Memory",
+    "Echo",
+    "Mystery",
+    "Light",
+    "Darkness",
+    "Serendipity",
+    "Time",
+    "Heart",
+    "Sky",
+    "River",
+    "Wander",
+    "Melody",
+    "Embrace",
+    "Home",
+    "Dance",
+    "Secret",
+    "Stars",
+    "Bloom",
+    "Moon",
+    "Love",
+    "Infinity",
+    "Flight",
+    "Fragile",
+    "Horizon",
+    "Pause",
+    "Window",
+    "Silence",
+    "Rise",
+    "Moment",
+    "Farewell",
+    "Feather",
+    "Story",
+    "Glow",
+    "Stillness",
+    "Path",
+    "Wild",
+    "Together"
+];
+
+        function generatePrompt() {
+            const randomIndex = Math.floor(Math.random() * prompts.length);
+            const promptElement = document.getElementById("prompt");
+            promptElement.textContent = prompts[randomIndex];
+            promptElement.style.opacity = "0";
+            setTimeout(() => { promptElement.style.opacity = "1"; }, 200);
+        }
+    </script>
+</body>
+</html>
