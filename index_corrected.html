@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing Prompt Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 5%;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button:focus {
+            outline: 3px solid #ffcc00;
+        }
+        #prompt {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Writing Prompt Generator</h1>
+    <label for="category">Select a category:</label>
+    <select id="category" aria-label="Writing Prompt Category">
+        <option value="single_word">Single Word</option>
+        <option value="dear_abby">Dear Abby</option>
+        <option value="first_line">First Line</option>
+        <option value="memoir">Memoir</option>
+        <option value="genre">Genre</option>
+        <option value="mixed">Mixed Mode</option>
+    </select>
+    <button onclick="generatePrompt()">Generate Prompt</button>
+    <p id="prompt"></p>
+
+    <script>
+        const prompts = {
+            single_word: ["Hope", "Journey", "Reflection", "Shadow", "Echo", "Whisper", "Storm", "Dream",
+                          "Solitude", "Laughter", "Rain", "Ocean", "Fire", "Breeze", "Memory", "Mystery", 
+                          "Light", "Darkness", "Serendipity", "Time", "Heart", "Sky", "Glow", "Story", 
+                          "Feather", "Farewell", "Moment", "Rise", "Pause", "Horizon", "Fragile", "Flight", 
+                          "Infinity", "Love", "Moon", "Bloom", "Stars", "Secret", "Dance", "Home", "Embrace", 
+                          "Melody", "Wander", "River"
+                         ],
+            dear_abby: [
+                "Dear Abby, my neighbor keeps borrowing my lawnmower and never returns it. What should I do?",
+                "Dear Abby, my upstairs neighbor plays VR games at 3 AM. I need sleep! What should I do?", 
+                "Dear Abby, my mother-in-law insists on reorganizing my kitchen every time she visits. Help!"
+            ],
+            first_line: [
+                "The storm rolled in just as she opened the letter.",
+                "I never meant to become a time traveler, but here we are.",
+                "'You have to see this,' he whispered, pointing at the sky."
+            ],
+            memoir: [
+                "The first time you felt independent",
+                "A moment when you made an important decision that changed your life",
+                "A childhood memory that still makes you smile"
+            ],
+            genre: [
+                "A trip to the DMV", 
+                "Grocery shopping on a busy Saturday", 
+                "Attending a boring office meeting"
+            ],
+        };
+        
+        function generatePrompt() {
+            const category = document.getElementById("category").value;
+            let selectedPrompts = prompts[category] ?? [].concat(...Object.values(prompts));
+            
+            const prompt = selectedPrompts[Math.floor(Math.random() * selectedPrompts.length)];
+            document.getElementById("prompt").innerText = prompt;
+        }
+    </script>
+</body>
+</html>
